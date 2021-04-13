@@ -16,7 +16,7 @@
 <p> More Exemplar Images: </p>
 <ul id = "images">
     {% for i in images %}
-    <li> <img src = "{{ images.src }}"> <a href = "{{ images.href }}"> </a> </li>
+    <li> <img src = "{{ i.src }}"> <a href = "{{ i.href }}"> </a> </li>
     {% endfor %}
 </ul>
 
