@@ -5,19 +5,21 @@
     <style type="text/css">
         .important { color: #336699; }
     </style>
-{% endblock %}
-{% block content %}
-    <h1>Diatoms</h1>
-    <p>
-    </p>
-{% endblock %}
-{% block footer %}
-<p> More Exemplar Images: </p>
-<div id = "images">
-    {% for i in images %}
-    <span> <img src = "{{ i.src }}"> <a href = "{{ i.href }}"> </a> </span>
-    {% endfor %}
+    <h1> Images</h1>
+
+<div class="container">
+  <div class="row">
+      <div class="column">
+          {% for i in images %}
+        <img src = "{{ i.src }}" class="rounded" style="height: 100px"> <a href = "{{ i.href }}"> </a>
+          {% endfor %}
+      </div>
+  </div>
 </div>
+
+  <!--  #{% for i in images %}
+    <span> <img src = "{{ i.src }}"> <a href = "{{ i.href }}"> </a> </span>
+    {% endfor %} -->
 <div>this is another div</div>
 
 {% endblock %}
