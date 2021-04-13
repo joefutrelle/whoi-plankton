@@ -23,6 +23,10 @@ plankton_images = template.render( images = [
     {'src': 'images/amoeba/IFCB1_2013_302_163814_00313.jpg', 'href': 'https://github.com/joefutrelle/whoi-plankton'}
 ])
 
+output_file = 'docs/output.html'
 
-print(plankton_images)
+with open(output_file, 'w') as fout:
+    print(plankton_images, file=fout)
+
+
 
