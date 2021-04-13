@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <link rel="stylesheet" href="style.css" />
+    <title>{% block title %} Title {% endblock %} - Test Webpage</title>
+    {% endblock %}
+</head>
+<body>
+    <div id="content">{% block content %} Here is the content of the site{% endblock %}</div>
+    <div id="footer">
+        {% block footer %}
+        {% endblock %}
+    </div>
+</body>
+</html>
