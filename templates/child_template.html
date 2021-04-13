@@ -1,12 +1,10 @@
 {% extends "parent_template.html" %}
 {% block title %}WHOI-Plankton Images{% endblock %}
 {% block head %}
-    {{ super() }}
-    <style type="text/css">
-        .important { color: #336699; }
-    </style>
     <h1> Images</h1>
+{% endblock %}
 
+{% block content %}
 <div class="container">
   <div class="row">
       <div class="column">
@@ -20,6 +18,6 @@
   <!--  #{% for i in images %}
     <span> <img src = "{{ i.src }}"> <a href = "{{ i.href }}"> </a> </span>
     {% endfor %} -->
-<div>this is another div</div>
+
 
 {% endblock %}
