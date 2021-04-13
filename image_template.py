@@ -5,14 +5,13 @@
 import jinja2
 from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader, Template
 
-templateLoader = jinja2.FileSystemLoader(searchpath="./")
+templateLoader = jinja2.FileSystemLoader(searchpath="templates")
 
 
 autoescape=select_autoescape(['html'])
 templateEnv = jinja2.Environment(loader=templateLoader)
 file = "child_template.html"
 template = templateEnv.get_template(file)
-
 
 
 plankton_images = template.render( images = [
