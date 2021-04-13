@@ -13,10 +13,11 @@
 {% endblock %}
 {% block footer %}
 <p> More Exemplar Images: </p>
-<ul id = "images">
+<div id = "images">
     {% for i in images %}
-    <li> <img src = "{{ i.src }}"> <a href = "{{ i.href }}"> </a> </li>
+    <span> <img src = "{{ i.src }}"> <a href = "{{ i.href }}"> </a> </span>
     {% endfor %}
-</ul>
+</div>
+<div>this is another div</div>
 
 {% endblock %}

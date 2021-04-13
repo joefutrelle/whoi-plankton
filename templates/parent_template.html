@@ -3,6 +3,9 @@
 <head>
     {% block head %}
     <link rel="stylesheet" href="style.css" />
+    <!-- bootstrap -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
     <title>{% block title %} Title {% endblock %} - Test Webpage</title>
     {% endblock %}
 </head>
@@ -12,5 +15,13 @@
         {% block footer %}
         {% endblock %}
     </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    $('img').click(function() { alert('hello there') });
+</script>
 </body>
 </html>
