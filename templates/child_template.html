@@ -5,15 +5,16 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
+<div id="container">
   <div class="row">
-      <div class="column">
           {% for i in images %}
-        <img src = "{{ i.src }}" class="rounded" style="height: 100px"> <a href = "{{ i.href }}"> </a>
+
+        <h2> {{ i.title }} </h2> <img src = "{{ i.src }}" class="rounded" style="height: 100px"> <a href = "{{ i.href }}"> </a>
+
           {% endfor %}
-      </div>
   </div>
 </div>
+
 
   <!--  #{% for i in images %}
     <span> <img src = "{{ i.src }}"> <a href = "{{ i.href }}"> </a> </span>
