@@ -1,22 +1,30 @@
 {% extends "parent_template.html" %}
 {% block title %}WHOI-Plankton Images{% endblock %}
 {% block head %}
+   <center>
     <h1> Images</h1>
+    </center>
 {% endblock %}
 
 {% block content %}
-<div id="container">
+<div id="container-fluid">
     {% for row in rows %}
-    <div class="row">
+    <div class="row justify-content-md-center">
+        <center>
         {% for image in row %}
         {% if image %}
-        <span class="col">
+
+        <span class="col-md-auto">
+
             <a href="{{ image.href }}">
-                <img src="{{ image.src }}">
+                <img title = "{{ image.title }}"src="{{ image.src }}" style="height: 125px; margin:5px 5px 5px 5px">
             </a>
+
         </span>
+
         {% endif %}
         {% endfor %}
+        </center>
     </div>
     {% endfor %}
 </div>
