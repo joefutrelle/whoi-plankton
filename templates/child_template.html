@@ -6,19 +6,19 @@
 
 {% block content %}
 <div id="container">
-  <div class="row">
-          {% for i in images %}
-
-        <h2> {{ i.title }} </h2> <img src = "{{ i.src }}" class="rounded" style="height: 100px"> <a href = "{{ i.href }}"> </a>
-
-          {% endfor %}
-  </div>
+    {% for row in rows %}
+    <div class="row">
+        {% for image in row %}
+        {% if image %}
+        <span class="col">
+            <a href="{{ image.href }}">
+                <img src="{{ image.src }}">
+            </a>
+        </span>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endfor %}
 </div>
-
-
-  <!--  #{% for i in images %}
-    <span> <img src = "{{ i.src }}"> <a href = "{{ i.href }}"> </a> </span>
-    {% endfor %} -->
-
 
 {% endblock %}
