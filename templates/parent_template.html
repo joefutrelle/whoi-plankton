@@ -1,18 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     {% block head %}
     <link rel="stylesheet" href="style.css" />
     <!-- bootstrap -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- sidebar -->
+    <link href="simple-sidebar.css" rel="stylesheet">
+  <link href="css/ifcb.css" rel="stylesheet">
+
     <title>{% block title %} Title {% endblock %} - Test Webpage</title>
     {% endblock %}
+    <style>
+
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 140px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: gray;
+  overflow-x: hidden;
+  padding-top: 40px;
+  margin-right: -150px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 16px;
+  color: black;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 200px;
+  font-size: 28px;
+  padding: 0px 10px;
+  position: absolute;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
 </head>
 <body>
     <div id="content">{% block content %} Here is the content of the site{% endblock %}</div>
     <div id="footer">
-        {% block footer %}
+        {% block body %}
         {% endblock %}
     </div>
 
