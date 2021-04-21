@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% block head %}
-    <link rel="stylesheet" href="style.css" />
+   <link rel="stylesheet" href="style.css" />
     <!-- bootstrap -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -11,6 +10,7 @@
     <link href="simple-sidebar.css" rel="stylesheet">
   <link href="css/ifcb.css" rel="stylesheet">
 
+    {% block head %}
     <title>{% block title %} Title {% endblock %} - Test Webpage</title>
     {% endblock %}
     <style>
