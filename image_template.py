@@ -6,35 +6,29 @@ import jinja2
 from jinja2 import select_autoescape
 from more_itertools import grouper
 import csv
+import pandas as pd
 
 templateLoader = jinja2.FileSystemLoader(searchpath="templates")
-
-
 autoescape = select_autoescape(['html'])
 templateEnv = jinja2.Environment(loader=templateLoader)
 file = "child_template.html"
 template = templateEnv.get_template(file)
 
-image_list = []
-images = []
+df = pd.read_csv('IFCB_image_wiki.csv')
 
-with open('IFCB_image_wiki.csv', newline='') as f:
-    reader = csv.reader(f)
-    for row in reader:
-        file = row[0]
-        image_row = row[0], row[1], row[2], row[3], row[4]
-        if file == '1':
-            image_list.append(image_row)
-            images.append("{src':" + row[3] + ",'href': 'https://github.com/joefutrelle/whoi-plankton', 'title':" + row[2] + "}")
+exemplar_images = df.loc[df['Index_ROI'] == 1]
 
-chunks = list(grouper(images, 3))
+column_names = df.drop_duplicates(subset='group', keep='first')
 
-plankton_images = template.render(rows=chunks)
+chunks = list(grouper(exemplar_images, 3))
+
+plankton_images = template.render(chunks=chunks, column_names=column_names)
 
 output_file = 'docs/output.html'
 
 with open(output_file, 'w') as fout:
     print(plankton_images, file=fout)
+
 
 
 
