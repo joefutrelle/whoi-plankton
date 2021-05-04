@@ -1,0 +1,17 @@
+{% for group_name, chunks in group_chunks.items() %}
+<div>
+  <h1>{{ group_name }}</h1>
+  {% for chunk in chunks %}
+  <div class="row">
+    {% for image in chunk %}
+      {% if image %}
+    <div class="col">
+        {{ image.class }}
+        <img src="{{ image.path }}">
+    </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
+{% endfor %}
