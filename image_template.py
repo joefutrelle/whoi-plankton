@@ -1,11 +1,7 @@
-#env = Environment(
-#    loader=FileSystemLoader('yourapplication', 'template'),
-#    autoescape=select_autoescape(['html'])
-#)
+import os
 import jinja2
 from jinja2 import select_autoescape
 from more_itertools import grouper
-import csv
 import pandas as pd
 
 templateLoader = jinja2.FileSystemLoader(searchpath="templates")
@@ -16,44 +12,27 @@ template = templateEnv.get_template(file)
 
 df = pd.read_csv('IFCB_image_wiki.csv')
 
-exemplar_images = df.loc[df['Index_ROI'] == 1]
+df = df.dropna(subset=['image'])
 
-column_names = df.drop_duplicates(subset='group', keep='first')
+exemplar_image_rows = df[df['Index_ROI'] == 1]
 
-chunks = list(grouper(exemplar_images, 3))
+group_chunks = {}
 
-plankton_images = template.render(chunks=chunks, column_names=column_names)
+MAX_COLUMNS = 3
+
+for group_name, group_rows in exemplar_image_rows.groupby('group'):
+    image_records = group_rows.to_dict('records')
+    for image_record in image_records:
+        url = image_record['image']
+        basename = os.path.basename(url)
+        image_name, extension = os.path.splitext(basename)
+        image_record['path'] = f'images/{image_name}.jpg'
+    group_chunks[group_name] = list(grouper(image_records, MAX_COLUMNS))
+
+
+plankton_images = template.render(group_chunks=group_chunks)
 
 output_file = 'docs/output.html'
 
 with open(output_file, 'w') as fout:
     print(plankton_images, file=fout)
-
-
-
-
-# images = [
- #    {'src': 'images/amoeba/IFCB1_2013_302_163814_00313.jpg', 'href': 'https://github.com/joefutrelle/whoi-plankton',
-    #    'title': 'amoeba'},
-        #   {'src': 'images/Apedinella/IFCB5_2017_036_121145_03566.jpg', 'href': 'https://github.com/joefutrelle/whoi-plankton',
-    #    'title': 'Apedinella'},
-        #   {'src': 'images/Calciopappus/IFCB1_2009_262_003744_06032.jpg',
-    #    'href': 'https://github.com/joefutrelle/whoi-plankton', 'title': 'Calciopappus'},
-        #   {'src': 'images/Chaetoceros_pennate/IFCB1_2010_078_185738_02724.jpg',
-        #    'href': 'https://github.com/joefutrelle/whoi-plankton', 'title': 'Chaetoceros_pennate'},
-    #   {'src': 'images/Corethron hystrix/IFCB5_2011_001_165030_05039.jpg',
-    #    'href': 'https://github.com/joefutrelle/whoi-plankton', 'title': 'Corethron hystrix'},
-        #   {'src': 'images/amoeba/IFCB1_2013_302_163814_00313.jpg', 'href': 'https://github.com/joefutrelle/whoi-plankton',
-    #   'title': 'amoeba'},
-        #  {'src': 'images/Apedinella/IFCB5_2017_036_121145_03566.jpg', 'href': 'https://github.com/joefutrelle/whoi-plankton',
-    #   'title': 'Apedinella'},
-        #  {'src': 'images/Calciopappus/IFCB1_2009_262_003744_06032.jpg',
-    #    'href': 'https://github.com/joefutrelle/whoi-plankton', 'title': 'Calciopappus'},
-        #  {'src': 'images/Chaetoceros_pennate/IFCB1_2010_078_185738_02724.jpg',
-    #   'href': 'https://github.com/joefutrelle/whoi-plankton', 'title': 'Chaetoceros_pennate'},
-        #  {'src': 'images/Corethron hystrix/IFCB5_2011_001_165030_05039.jpg',
-    #   'href': 'https://github.com/joefutrelle/whoi-plankton', 'title': 'Corethron hystrix'},
-        #  {'src': 'images/amoeba/IFCB1_2013_302_163814_00313.jpg', 'href': 'https://github.com/joefutrelle/whoi-plankton',
-#  'title': 'amoeba'},
-
-#]

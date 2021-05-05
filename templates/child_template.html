@@ -1,129 +1,23 @@
 {% extends "parent_template.html" %}
 {% block title %}WHOI-Plankton Images{% endblock %}
-{% block head %}
-{% endblock %}
-
 {% block body %}
-<div class="container-fluid">
-<div class="row">
-    <!-- Side nav bar -->
-    <div class="bg-light border-right vh-100" id="sidebar-wrapper">
-        <div class="sidebar-heading">Side Nav </div>
-        <div class="list-group list-group-flush overflow-auto h-100">
-{% for name in column_names %}
-            <a href="https://github.com/joefutrelle/whoi-plankton" class="list-group-item list-group-item-action bg-light">"{{ column_names['group'] }}"</a>
-            {% endfor %}
-               </div>
+
+{% for group_name, chunks in group_chunks.items() %}
+<div>
+  <h1>{{ group_name }}</h1>
+  {% for chunk in chunks %}
+  <div class="row">
+    {% for image in chunk %}
+      {% if image %}
+    <div class="col-md-auto" style="width: 33%; float: right">
+        {{ image.class }}
+        <div><img src="{{ image.path }}" class="img-fluid"></div>
     </div>
-
-   {% for image in chunks %}
-    <div class="row justify-content-md-center">
-        <center>
-
-        <span class="col-md-auto" style="width: 25%; float: right">
-                <h3> {{ exemplar_images['class'] }} </h3>
-                <img title = "{{ exemplar_images['class'] }}"src="{{ exemplar_images['image'] }}" style="height: 100px; margin:5px 5px 5px 5px; max-width: 300px">
-
-
-        </span>
-
-        </center>
-    </div>
+      {% endif %}
     {% endfor %}
-{% endblock %}
-    <!-- Image Body Outline
-    <div class="col-md-9 border mx-auto container-fluid" align="center">
-        Images
-        {% for row in rows %}
-        {% for image in row %}
-        {% if image %}
-        <div class="row" align="center">
-            <div class="col-md-4 border mx-auto"> Column
-                <a href="{{ image.href }}">
-                <div class="row border mx-auto"> {{ image.title }} </div>
-                <div class="row border mx-auto"> {{ image.src }} </div>
-            </div>
-            </a>
-            {% endif %}
-            {% endfor %}
-            {% endfor %}
-
-
-    </div>
+  </div>
+  {% endfor %}
 </div>
-</div>
-</div>
--->
-
-<!-- Photo Code -->
-<!--
-    <div id="content">
-        <div id="grid-container">
-<div class="sidenav">
-  <a href="overview">Overview</a>
-  <a href="#coccolithophore">Coccolithophore</a>
-    <a href="#diatoms">Diatoms</a>
-  <a href="#diatoms">Diatoms</a>
-  <a href="#dinoflagellates">Dinoflagellates</a>
-    <a href="#flagellates">Flagellates</a>
-    <a href="#miscellaneous">Miscellaneous</a>
-    </div>
-</div>
-        <div id="container-fluid">
-    {% for row in rows %}
-    <div class="row justify-content-md-center">
-        <center>
-        {% for image in row %}
-        {% if image %}
-
-        <span class="col-md-auto" style="width: 25%; float: right">
-
-            <a href="{{ image.href }}">
-                <h3> {{ image. title }}</h3>
-                <img title = "{{ image.title }}"src="{{ image.src }}" style="height: 100px; margin:5px 5px 5px 5px; max-width: 300px">
-            </a>
-
-        </span>
-
-        {% endif %}
-        {% endfor %}
-        </center>
-    </div>
-    {% endfor %}
-</div>
-    </div>
-</div>
--->
-
-
-
-{% block content %}
-
+{% endfor %}
 
 {% endblock %}
-
-    <!--
-    <div class="col-md-4 border mx-auto"> Column
-                <div class="row border mx-auto"> Image Title </div>
-                <div class="row border mx-auto"> Image</div>
-            </div>
-            <div class="col-md-4 border mx-auto"> Column
-                <div class="row border mx-auto"> Image Title </div>
-                <div class="row border mx-auto"> Image </div>
-            </div>
-            </div>
-        <div class="row">
-            <div class="col-md-4 border mx-auto"> Column
-                <div class="row border mx-auto"> Image Title </div>
-                <div class="row border mx-auto"> Image </div>
-            </div>
-            <div class="col-md-4 border mx-auto"> Column
-                <div class="row border mx-auto"> Image Title </div>
-                <div class="row border mx-auto"> Image</div>
-            </div>
-            <div class="col-md-4 border mx-auto"> Column
-                <div class="row border mx-auto"> Image Title </div>
-                <div class="row border mx-auto"> Image </div>
-            </div>
-            </div>
-    -->
