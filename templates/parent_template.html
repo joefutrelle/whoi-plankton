@@ -11,11 +11,11 @@
   <link href="css/ifcb.css" rel="stylesheet">
 
     {% block head %}
-    <title>{% block title %} Title {% endblock %} - Test Webpage</title>
+    <title>{% block title %} Title {% endblock %}</title>
     {% endblock %}
 </head>
 <body>
-    <div id="content">{% block content %} Here is the content of the site{% endblock %}</div>
+    <div id="content">{% block content %}{% endblock %}</div>
     <div id="footer">
         {% block body %}
         {% endblock %}
