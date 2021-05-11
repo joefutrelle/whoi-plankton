@@ -9,13 +9,13 @@
         <div class="list-group list-group-flush overflow-auto h-100">
           {% for group_name, chunks in group_chunks.items() %}
           <div class="dropdown show">
-  <a href="https://github.com/joefutrelle/whoi-plankton" class="list-group-item list-group-item-action bg-light"  role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <a href="#" class="list-group-item list-group-item-action bg-light"  role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     {{ group_name }}
   </a>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+  <div class="dropdown-submenu" aria-labelledby="dropdownMenuLink">
     {% for chunk in chunks %}
     {% for image in chunk %}
-    <div class="dropdown-item" href="#"> {{ image.class }} </div>
+    <div class="dropdown-item border" href="#"> {{ image.class }} </div>
     {% endfor %}
     {% endfor %}
   </div>
@@ -34,9 +34,9 @@
   <div class="row">
     {% for image in chunk %}
       {% if image %}
-    <div class="col-md-auto center" style="width: 33%">
+    <div class="col-md-auto center">
         {{ image.class }}
-        <div><img src="{{ image.path }}" class="img-fluid" style="width: 200px; margin:5px 5px 5px 5px"></div>
+        <div class="col px-md-5"><img src="{{ image.path }}" class="img-fluid" style="width: 200px"></div>
     </div>
       {% endif %}
     {% endfor %}
