@@ -9,13 +9,13 @@
         <div class="list-group list-group-flush overflow-auto h-100">
           {% for group_name, chunks in group_chunks.items() %}
           <div class="dropdown show">
-  <a href="#" class="list-group-item list-group-item-action bg-light"  role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <a href="#" class="list-group-item list-group-item-action bg-secondary text-white fw-bolder border border-white px-2"  role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     {{ group_name }}
   </a>
-  <div class="dropdown-submenu" aria-labelledby="dropdownMenuLink">
+  <div class="dropdown-submenu show">
     {% for chunk in chunks %}
     {% for image in chunk %}
-    <div class="dropdown-item border" href="#"> {{ image.class }} </div>
+    <a class="dropdown-item border bg-light" href="#"> {{ image.class }} </a>
     {% endfor %}
     {% endfor %}
   </div>
