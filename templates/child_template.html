@@ -3,19 +3,19 @@
 {% block body %}
 <div class="container-fluid">
 <div class="row">
-  <div class="col-3 " id="sticky-sidebar">
-    <div class="bg-light border-right vh-100 sticky-top" id="sidebar-wrapper">
+  <div class="col-2.5">
+    <div class="bg-light border-right vh-100 sticky-top">
         <div class="sidebar-heading">WHOI-Plankton <br/> Example IFCB images </div>
         <div class="list-group list-group-flush overflow-auto h-100">
           {% for group_name, chunks in group_chunks.items() %}
           <div class="dropdown show">
-  <a href="#" class="list-group-item list-group-item-action bg-secondary text-white fw-bolder border border-white px-2"  role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <a href="#" class="list-group-item list-group-item-action bg-secondary text-white fw-bolder border border-white px-2"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     {{ group_name }}
   </a>
   <div class="dropdown-submenu show">
     {% for chunk in chunks %}
     {% for image in chunk %}
-    <a class="dropdown-item border bg-light" href="#"> {{ image.class }} </a>
+    <a href="#" class="dropdown-item border bg-light"> {{ image.class }} </a>
     {% endfor %}
     {% endfor %}
   </div>
@@ -31,12 +31,12 @@
 <div class="text-center">
   <h1>{{ group_name }}</h1>
   {% for chunk in chunks %}
-  <div class="row">
+  <div class="row justify-content-center">
     {% for image in chunk %}
       {% if image %}
-    <div class="col-md-auto center">
+    <div class="col-md-auto justify-content-center">
         {{ image.class }}
-        <div class="col px-md-5"><img src="{{ image.path }}" class="img-fluid" style="width: 200px"></div>
+        <div class="col padding-0"><img src="{{ image.path }}" class="img-fluid" style="max-width: 200px"></div>
     </div>
       {% endif %}
     {% endfor %}
