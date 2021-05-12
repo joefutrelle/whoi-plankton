@@ -18,7 +18,7 @@ exemplar_image_rows = df[df['Index_ROI'] == 1]
 
 group_chunks = {}
 
-MAX_COLUMNS = 3
+MAX_COLUMNS = 4
 
 for group_name, group_rows in exemplar_image_rows.groupby('group'):
     image_records = group_rows.to_dict('records')
