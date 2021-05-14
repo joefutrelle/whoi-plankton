@@ -1,24 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="style.css" />
+    <!-- bootstrap -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
     <meta charset="UTF-8">
     <title>WHOI Plankton</title>
 </head>
 <body>
-<div class="text-center">
+{% block body %}
+<div class="container-fluid">
+<div class="text-center mb-5">
   <h1>{{ class_name }}</h1>
+    <div class="row justify-content-center">
   {% for chunk in class_chunks %}
-  <div class="row justify-content-center">
+  <div class="col md-auto justify-content-center">
     {% for image in chunk %}
       {% if image %}
-    <div class="col-md-auto justify-content-center">
-        {{ image.class }}
-        <div class="col padding-0"><img src="{{ image.path }}" class="img-fluid" style="max-width: 200px"></div>
-    </div>
+      <span class="col">
+       <img src="{{ image.path }}" class="img-fluid">
+          </span>
       {% endif %}
     {% endfor %}
   </div>
   {% endfor %}
-</div>
+        </div>
+    </div>
+
+    </div>
+{% endblock %}
 </body>
 </html>
